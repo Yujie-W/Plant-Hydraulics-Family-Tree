@@ -10,7 +10,7 @@ using Revise
 export plot_family_tree
 
 
-function plot_boxed_text!(ax, x, y, text; fc="white", ljust=35)
+function plot_boxed_text!(ax, x, y, text; fc="white", ljust=48)
     box = Dict(:boxstyle => "round,pad=0.5", :fc => fc, :ec => "k", :lw => 1)
     ax.text(x, y, lpad("\n", ljust), ha="center", va="center", fontsize=12, color="k", bbox=box)
     ax.text(x, y, text, ha="center", va="center", fontsize=12)
