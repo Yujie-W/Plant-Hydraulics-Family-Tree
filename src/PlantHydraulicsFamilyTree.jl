@@ -10,6 +10,19 @@ using Revise
 export plot_family_tree
 
 
+"""
+
+    plot_boxed_text!(ax, x, y, text; fc="white", ljust=48)
+
+Plot a boxed text at position (x, y) on axis `ax`, given
+- `ax`: the axis to plot on
+- `x`: x coordinate
+- `y`: y coordinate
+- `text`: the text to plot
+- `fc`: face color of the box (default: "white")
+- `ljust`: left justification for the box size (default: 48)
+
+"""
 function plot_boxed_text!(ax, x, y, text; fc="white", ljust=48)
     box = Dict(:boxstyle => "round,pad=0.5", :fc => fc, :ec => "k", :lw => 1)
     ax.text(x, y, lpad("\n", ljust), ha="center", va="center", fontsize=12, color="k", bbox=box)
@@ -19,6 +32,19 @@ function plot_boxed_text!(ax, x, y, text; fc="white", ljust=48)
 end;
 
 
+"""
+
+    get_box_color(role::String)
+
+Get the box color for a given role,
+- `Post-doctoral`: "#cab08f"
+- `Doctoral`: "#afd4c4"
+- `Pre-doctoral`: "#f9e088"
+- `Visiting`: "#c9d2d3"
+- `Self`: "#ffffff"
+- otherwise: "#ff0000" and print a warning message
+
+"""
 function get_box_color(role::String)
     if role == "Post-doctoral"
         return "#cab08f"
@@ -37,6 +63,15 @@ function get_box_color(role::String)
 end;
 
 
+"""
+
+    plot_family_tree(csvfile::String; savepath::Union{String,Nothing}=nothing)
+
+Plot the family tree from a CSV file, given
+- `csvfile`: path to the CSV file
+- `savepath`: path to save the figure (default: nothing, do not save)
+
+"""
 function plot_family_tree(csvfile::String; savepath::Union{String,Nothing}=nothing)
     # read the csv file and determine the figure size
     df = CSV.read(csvfile, DataFrame);
