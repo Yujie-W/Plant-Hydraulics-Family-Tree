@@ -1,7 +1,8 @@
 # Plant Hydraulics Family Tree
 
+## John S Sperry
 ```@example preview
 using PlantHydraulicsFamilyTree
 
-plot_family_tree("../../test/test.csv");
+plot_family_tree("../../trees/sperry.csv");
 ```
